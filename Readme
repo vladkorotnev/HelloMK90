@@ -1,5 +1,9 @@
 A hello world skeleton for the Elektronika MK-90.
+
 Currently can only be inserted into the SMP 0 slot as I didn't yet figure out how to determine the SMP slot number we are currently in.
+
+Why?
+	The MK90 only loads first 512 (o200) bytes from the SMP at address 0000 in RAM, sets SP to o200, and runs from 0000. 512 bytes is a challenging amount of data, but isn't really enough to do anything, so this shows how to load extra code from the SMP afterwards.
 
 Requires: 
 	MACRO-11 (https://github.com/shattered/macro11)

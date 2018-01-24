@@ -31,6 +31,9 @@ SMPSETADDR:
 	rts pc ; END SET ADDRESS
 
 SMPREAD:	; Read from SMP
+	mov	#11,@#164022 ; CONST: transfer rate
+	mov	#164024,r1	 ; CONST: control/status register
+	mov	#174506,r2	 ; CONST: procedure 'wait for the transfer completed'
 	mov	#320,@#164026	; CONST: Read Postincrement
 
 	jsr	pc,(r2)
@@ -43,7 +46,7 @@ readloop:	movb	@#164020,(r3)+	;read data byte from the SMP to the RAM
 	tst	@#164026		;end of the transfer
 	jsr	pc,(r2)
 
-	rts pc
+	rts pc ; END READ
 
 
 start:
@@ -52,7 +55,8 @@ start:
 	mov #picture,r3  ; PARAM: start address (in cartridge) of src
 	call SMPSETADDR
 	mov	#PICLEN,r4		; PARAM number of bytes
-	mov #30000, r3  	; PARAM: start address of dst
+	mov @#34022, r3  	; PARAM: start address of dst
+	; At o34022 by default is the address of the display RAM
 	call SMPREAD
 
 

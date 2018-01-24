@@ -7,6 +7,11 @@
 	NOP 		; Obligatory!
 
 	mov sp, 33000   ; Move stack to nearly end of RAM
+
+		; LCD controller initialisation
+			mov	34022,@#164000
+			mov	#104306,@#164002
+
 	jmp start		; Kickstart the loader
 
 SMPSETADDR:

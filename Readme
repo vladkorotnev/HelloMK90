@@ -1,0 +1,16 @@
+A hello world skeleton for the Elektronika MK-90.
+Currently can only be inserted into the SMP 0 slot as I didn't yet figure out how to determine the SMP slot number we are currently in.
+
+Requires: 
+	MACRO-11 (https://github.com/shattered/macro11)
+	obj2bin	 (https://github.com/AK6DN/obj2bin)
+
+Includes:
+	hello90.mac — the program itself
+	Makefile	— self-explanatory
+	test.png	- a 1-bit 120x64 splash screen for the program
+	gazou2mk.py	- converts a 1-bit 120x64 image into an MK90 screen dump (adding the .mk90 extension)
+	file2oct.py	- transcodes a binaryfile into a list of .byte directives in octal system (.radix 8)
+
+In action:
+	Emulated: https://pp.userapi.com/c841234/v841234106/6148a/z0PxPCJg4y0.jpg
